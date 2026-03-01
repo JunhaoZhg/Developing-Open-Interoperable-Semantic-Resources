@@ -2,7 +2,7 @@
 
 ## Caso de Uso 1: Identificación de Pokémon con alto potencial ofensivo.
 * **Actor:** Entrenador Pokémon
-* **Descripción:** El usuario desea identificar qué Pokémon son los mejores "atancantes"  y "defensores" para su equipo. Para ello, necesita filtrar los Pokémon que tengan los valores más altos en las estadísticas de Attack o Sp. Atk, Defense o Sp.Defense y velocidad dependiendo del tipo elemental. 
+* **Descripción:** El usuario desea identificar qué Pokémon son los mejores "atancantes"  y "defensores" para su equipo. Para ello, necesita filtrar los Pokémon que tengan los valores más altos en las estadísticas de Hp, Attack o Sp. Atk, Defense o Sp.Defense y velocidad dependiendo del tipo elemental. 
 * **Flujo:** El sistema permite ordenar y filtrar los Pokémon según sus capacidades ofensivas y defensivas y tipo elemental.
 
 ## Caso de Uso 2: Planificación de expediciones de captura por región
