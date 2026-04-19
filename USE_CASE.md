@@ -1,7 +1,7 @@
 # Casos de Uso - Recurso Semántico Pokémon
 
 Este documento describe los escenarios de uso que guían el desarrollo de la ontología, identificando a los actores involucrados y el flujo de información necesario para cumplir con los objetivos del sistema.
-
+** Nota ** Sp significa Special Attack
 ## Caso de Uso 1: Identificación de Pokémon con alto potencial de combate.
 * **Actor:** Entrenador Pokémon
 * **Descripción:** El usuario desea identificar qué Pokémon son los mejores "atacantes" y "defensores" para su equipo. Para ello, necesita filtrar los Pokémon que tengan los valores más altos en las estadísticas de HP, Attack, Sp. Atk, Defense, Sp. Defense y Speed, dependiendo del tipo elemental.
