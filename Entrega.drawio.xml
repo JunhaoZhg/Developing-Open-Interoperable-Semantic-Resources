@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="jBUsI6J_CHCa6-EvA5G8">
+    <mxGraphModel dx="2338" dy="1888" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="YSyhZHhzLaaS_s7x14X1-2" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;@prefix pokemon: &amp;lt;http://example.org/pokemon#&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;@prefix xsd: &amp;lt;http://www.w3.org/2001/XMLSchema#&amp;gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;@prefix owl: &amp;lt;http://www.w3.org/2002/07/owl#&amp;gt;&lt;/div&gt;&lt;div&gt;@prefix rdfs: &amp;lt;http://www.w3.org/2000/01/rdf-schema#&amp;gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="290" x="-70" y="-640" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-1" parent="1" style="swimlane;whiteSpace=wrap;html=1;" value="Legend" vertex="1">
+          <mxGeometry height="155" width="220" x="300" y="-665" as="geometry">
+            <mxRectangle height="30" width="80" x="330" y="370" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-2" parent="z_UHA-a6ej6aqJmDJHXC-1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="Datatype Property: datatype" vertex="1">
+          <mxGeometry height="30" width="181" x="19" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-3" parent="z_UHA-a6ej6aqJmDJHXC-1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="Class" vertex="1">
+          <mxGeometry height="30" width="181" x="19" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-5" edge="1" parent="z_UHA-a6ej6aqJmDJHXC-1" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endSize=8;arcSize=0;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="19" y="125" as="sourcePoint" />
+            <mxPoint x="200" y="125" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-17" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Object property" vertex="1">
+          <mxGeometry relative="1" x="-0.0055" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-18" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;" value="Clases (owl:Class): 10&lt;br/&gt;Object Properties (owl:ObjectProperty): 10&lt;br/&gt;Data Properties (owl:DatatypeProperty): 10&amp;nbsp;&lt;div&gt;Total elementos ontológicos: 30&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="290" x="601" y="-637.5" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="319.5" y="-300" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="655.5" y="-260" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="655.5" y="-110" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="655.5" y="-430" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="620" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="319.5" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="30" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-26" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="-60" y="-160" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="-15.5" y="-260" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" value="pookemon:Pokemon" vertex="1">
+          <mxGeometry height="30" width="181" x="-15.5" y="-430" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-31" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.1;exitDx=0;exitDy=0;" target="z_UHA-a6ej6aqJmDJHXC-29" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="310" y="-310" as="sourcePoint" />
+            <mxPoint x="170" y="-400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-33" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-31" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:tieneTipoPrimario" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-34" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="z_UHA-a6ej6aqJmDJHXC-28" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="310" y="-280" as="sourcePoint" />
+            <mxPoint x="180" y="-240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-35" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-34" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:disponibleEnRegion" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-36" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=0.1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="z_UHA-a6ej6aqJmDJHXC-26" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="340" y="-260" as="sourcePoint" />
+            <mxPoint x="190" y="-110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-37" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-36" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:perteneceAGeneración" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-38" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="z_UHA-a6ej6aqJmDJHXC-24" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="400" y="-250" as="sourcePoint" />
+            <mxPoint x="410" y="50" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-39" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-38" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:tieneCruvaExperiencia" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-40" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="z_UHA-a6ej6aqJmDJHXC-23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="480" y="-260" as="sourcePoint" />
+            <mxPoint x="610" y="-10" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-41" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-40" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:tieneFormaCorporal" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-42" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=1;exitY=0.7;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="z_UHA-a6ej6aqJmDJHXC-21" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="510" y="-270" as="sourcePoint" />
+            <mxPoint x="750" y="-120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-43" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-42" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:tieneColor" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-44" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;entryX=0.561;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="z_UHA-a6ej6aqJmDJHXC-20" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="510" y="-290" as="sourcePoint" />
+            <mxPoint x="740" y="-270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-45" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-44" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:tieneHabilidad" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-46" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="z_UHA-a6ej6aqJmDJHXC-25" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="532" y="-250" as="sourcePoint" />
+            <mxPoint x="360" y="-75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-47" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-46" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:perteneceAEggGroup" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-49" edge="1" parent="1" source="z_UHA-a6ej6aqJmDJHXC-19" style="endArrow=classic;html=1;endSize=8;arcSize=0;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.1;exitDx=0;exitDy=0;" target="z_UHA-a6ej6aqJmDJHXC-22" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="650" y="-290" as="sourcePoint" />
+            <mxPoint x="906" y="-265" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-50" connectable="0" parent="z_UHA-a6ej6aqJmDJHXC-49" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="pokemon:viveEnHabitat" vertex="1">
+          <mxGeometry relative="1" x="0.0109" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-51" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 51));&quot;&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;&quot;&gt;hp&lt;/span&gt; &lt;span class=&quot;token token prefix&quot; style=&quot;&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;&quot;&gt;integer&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="155" x="332.5" y="-270" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-55" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;attack&lt;/span&gt; &lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;integer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="155" x="332.5" y="-250" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-56" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;defense&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;integer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="167.5" x="332.5" y="-230" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-57" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;spAtk&lt;/span&gt; &lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;integer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="155" x="332.5" y="-210" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-58" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;spDef&lt;/span&gt; &lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;integer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="155" x="332.5" y="-190" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-59" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;speed&lt;/span&gt; &lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;integer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="155" x="332.5" y="-170" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-60" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;captureRate&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;integer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="187.5" x="332.5" y="-150" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-61" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;baseTotal&lt;/span&gt; &lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;integer&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="177.5" x="332.5" y="-130" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-62" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;pokemon&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;esHabilidadOculta&lt;/span&gt; &lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;xsd&lt;/span&gt;&lt;span class=&quot;token token prefix&quot; style=&quot;color: rgb(211, 215, 222);&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token token local-name&quot; style=&quot;color: rgb(112, 184, 255);&quot;&gt;boolean&lt;/span&gt;" vertex="1">
+          <mxGeometry height="20" width="227.5" x="332.5" y="-110" as="geometry" />
+        </mxCell>
+        <mxCell id="z_UHA-a6ej6aqJmDJHXC-64" parent="1" style="rounded=0;whiteSpace=wrap;html=1;snapToPoint=1;points=[[0.1,0],[0.2,0],[0.3,0],[0.4,0],[0.5,0],[0.6,0],[0.7,0],[0.8,0],[0.9,0],[0,0.1],[0,0.3],[0,0.5],[0,0.7],[0,0.9],[0.1,1],[0.2,1],[0.3,1],[0.4,1],[0.5,1],[0.6,1],[0.7,1],[0.8,1],[0.9,1],[1,0.1],[1,0.3],[1,0.5],[1,0.7],[1,0.9]];fillColor=light-dark(#A20025,#994C00);fontColor=#ffffff;strokeColor=#6F0000;" value="&lt;font color=&quot;#23619e&quot;&gt;pokemon.nombreForma xsd:string&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="227.5" x="332.5" y="-90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
