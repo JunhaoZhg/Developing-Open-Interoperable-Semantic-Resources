@@ -13,3 +13,18 @@ Este documento describe los escenarios de uso que guían el desarrollo de la ont
 * **Actor:** Entrenador Pokémon
 * **Descripción:** El usuario desea organizar sus viajes de captura optimizando sus recursos (Pokeballs). Para ello, necesita saber qué Pokémon están disponibles en una región específica y conocer la dificultad de captura basándose en su capture_rate.
 * **Flujo de Actividad:** El sistema permite filtrar la lista de Pokémon por su región de origen y tipo elemental, mostrando el ratio de captura para que el entrenador decida si la expedición es viable.
+
+## Caso de Uso 3: Búsqueda de Pokémon por características físicas
+* **Actor:** Entrenador Pokémon
+* **Descripción:** El usuario desea buscar Pokémon filtrando por su color predominante y su forma corporal, por ejemplo para completar colecciones temáticas o identificar Pokémon visualmente similares.
+* **Flujo de Actividad:** El sistema permite filtrar Pokémon por color y forma corporal, mostrando los que coincidan con los criterios seleccionados.
+
+## Caso de Uso 4: Planificación de crianza
+* **Actor:** Entrenador Pokémon
+* **Descripción:** El usuario desea saber qué Pokémon son compatibles para la crianza y cuánta experiencia necesitan para alcanzar su nivel máximo, para optimizar su tiempo de entrenamiento.
+* **Flujo de Actividad:** El sistema permite filtrar Pokémon por grupo de huevo para identificar compatibilidades de crianza, y consultar su curva de experiencia para estimar el esfuerzo de entrenamiento.
+
+## Caso de Uso 5: Exploración por hábitat y habilidad
+* **Actor:** Entrenador Pokémon
+* **Descripción:** El usuario desea planificar expediciones a un tipo de entorno específico (cueva, bosque, mar, etc.) y seleccionar Pokémon con habilidades útiles para ese entorno.
+* **Flujo de Actividad:** El sistema permite filtrar Pokémon por hábitat y consultar sus habilidades, para que el entrenador pueda preparar su equipo según el terreno de exploración.
