@@ -2,7 +2,8 @@
 
 Este documento describe los escenarios de uso que guían el desarrollo de la ontología, identificando a los actores involucrados y el flujo de información necesario para cumplir con los objetivos del sistema.
 
-** Nota ** Sp significa "Special Attack", Hp significa "Health / Hit Points" (puntos de vida).
+Nota: Sp significa "Special", usado con "Attack" o "Defense", por ejemplo, "Sp Attack" (special attack) o "Sp defense" (special defense). 
+Hp significa "Health / Hit Points" (puntos de vida) 
 
 ## Caso de Uso 1: Identificación de Pokémon con alto potencial de combate.
 * **Actor:** Entrenador Pokémon
