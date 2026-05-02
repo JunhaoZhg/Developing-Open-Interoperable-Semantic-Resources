@@ -1,0 +1,310 @@
+@prefix pokemon: <http://example.org/pokemon#> .
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+#############################################################
+# SHACL Shapes for the Pokémon ontology
+# Ontology IRI: http://example.org/pokemon#
+# Author: <student>
+# Course: Developing Open, Interoperable Semantic Resources (UPM)
+#
+# Each shape targets the class pokemon:Pokemon (or one of the
+# value classes) and validates a different KIND of constraint:
+#   1. PokemonShape           -> cardinality + datatype + value range (sh:minInclusive / sh:maxInclusive)
+#   2. PokemonTypeShape       -> object property class constraint + max cardinality
+#   3. PokemonHiddenAbilityShape -> datatype boolean + cardinality
+#   4. PokemonNameShape       -> string pattern (sh:pattern) + uniqueness via sh:minLength
+#   5. PokemonBaseTotalShape  -> SHACL-SPARQL constraint: baseTotal must equal hp+attack+defense+spAtk+spDef+speed
+#   6. RegionShape            -> closed list of allowed values (sh:in)
+#   7. GenerationShape        -> integer range 1..7 (the dataset only covers gens 1-7)
+#   8. ColorShape             -> closed list of allowed values (sh:in)
+#   9. CaptureRateShape       -> value range 3..255 (Pokémon games constant) + datatype
+#  10. PokemonHabitatShape    -> sh:nodeKind IRI + class target (only Pokémon of gens 1-3 should have habitat,
+#                                so habitat is OPTIONAL but, if present, must point to a Habitat individual)
+#############################################################
+
+
+#-----------------------------------------------------------
+# 1. Main shape over pokemon:Pokemon
+#    - The 6 base stats (hp, attack, defense, spAtk, spDef, speed)
+#      are mandatory (exactly 1) and must be xsd:integer in [1,255]
+#      (the canonical Pokémon stat range).
+#    - nombreForma is mandatory (exactly 1) and must be a string.
+#-----------------------------------------------------------
+pokemon:PokemonShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Pokemon ;
+    rdfs:label "Shape for Pokémon base stats and name" ;
+
+    sh:property [
+        sh:path pokemon:hp ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 255 ;
+        sh:message "hp must be a single integer in the range [1,255]." ;
+    ] ;
+
+    sh:property [
+        sh:path pokemon:attack ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 255 ;
+        sh:message "attack must be a single integer in the range [1,255]." ;
+    ] ;
+
+    sh:property [
+        sh:path pokemon:defense ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 255 ;
+        sh:message "defense must be a single integer in the range [1,255]." ;
+    ] ;
+
+    sh:property [
+        sh:path pokemon:spAtk ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 255 ;
+        sh:message "spAtk must be a single integer in the range [1,255]." ;
+    ] ;
+
+    sh:property [
+        sh:path pokemon:spDef ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 255 ;
+        sh:message "spDef must be a single integer in the range [1,255]." ;
+    ] ;
+
+    sh:property [
+        sh:path pokemon:speed ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 255 ;
+        sh:message "speed must be a single integer in the range [1,255]." ;
+    ] ;
+
+    sh:property [
+        sh:path pokemon:nombreForma ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "nombreForma must be exactly one xsd:string." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 2. Type constraints on Pokémon
+#    - Every Pokémon MUST have exactly 1 primary type (tieneTipoPrimario)
+#    - It MAY have AT MOST 1 secondary type (tieneTipoSecundario)
+#    - The value of both properties MUST be an instance of pokemon:Tipo
+#-----------------------------------------------------------
+pokemon:PokemonTypeShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Pokemon ;
+    rdfs:label "Shape for primary/secondary Pokémon type" ;
+
+    sh:property [
+        sh:path pokemon:tieneTipoPrimario ;
+        sh:class pokemon:Tipo ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message "Every Pokémon must have exactly one primary type (instance of pokemon:Tipo)." ;
+    ] ;
+
+    sh:property [
+        sh:path pokemon:tieneTipoSecundario ;
+        sh:class pokemon:Tipo ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message "Secondary type, if present, must be a single instance of pokemon:Tipo." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 3. Boolean constraint on hidden-ability flag
+#    Each Pokémon MUST declare exactly 1 boolean value for esHabilidadOculta.
+#-----------------------------------------------------------
+pokemon:PokemonHiddenAbilityShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Pokemon ;
+    rdfs:label "Shape for the boolean hidden-ability flag" ;
+
+    sh:property [
+        sh:path pokemon:esHabilidadOculta ;
+        sh:datatype xsd:boolean ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "esHabilidadOculta must be exactly one xsd:boolean (true/false)." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 4. Pattern constraint on the name (nombreForma)
+#    The name must start with a capital letter and only contain
+#    letters, digits, hyphens, dots and spaces (e.g. "Mega Venusaur",
+#    "Mr. Mime", "Nidoran-F"). Min length 2 to avoid empty noise.
+#-----------------------------------------------------------
+pokemon:PokemonNameShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Pokemon ;
+    rdfs:label "Shape for the lexical form of nombreForma" ;
+
+    sh:property [
+        sh:path pokemon:nombreForma ;
+        sh:minLength 2 ;
+        sh:maxLength 40 ;
+        sh:pattern "^[A-Z][A-Za-z0-9 \\.\\-]+$" ;
+        sh:message "nombreForma must start with a capital letter and only contain letters, digits, spaces, hyphens or dots (length 2-40)." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 5. SPARQL-based constraint on baseTotal
+#    baseTotal MUST equal hp + attack + defense + spAtk + spDef + speed.
+#    This is the canonical definition of "Total" in the games.
+#-----------------------------------------------------------
+pokemon:PokemonBaseTotalShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Pokemon ;
+    rdfs:label "baseTotal must equal the sum of the 6 base stats" ;
+
+    sh:property [
+        sh:path pokemon:baseTotal ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 6 ;
+        sh:maxInclusive 1530 ;
+        sh:message "baseTotal must be a single integer between 6 and 1530." ;
+    ] ;
+
+    sh:sparql [
+        sh:message "baseTotal does not match hp+attack+defense+spAtk+spDef+speed for this Pokémon." ;
+        sh:prefixes [
+            sh:declare [ sh:prefix "pokemon" ; sh:namespace "http://example.org/pokemon#"^^xsd:anyURI ] ;
+        ] ;
+        sh:select """
+            SELECT $this ?baseTotal ?computed
+            WHERE {
+                $this pokemon:baseTotal ?baseTotal ;
+                      pokemon:hp ?hp ;
+                      pokemon:attack ?atk ;
+                      pokemon:defense ?def ;
+                      pokemon:spAtk ?spa ;
+                      pokemon:spDef ?spd ;
+                      pokemon:speed ?spe .
+                BIND ( (?hp + ?atk + ?def + ?spa + ?spd + ?spe) AS ?computed )
+                FILTER (?baseTotal != ?computed)
+            }
+        """ ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 6. Closed list of allowed regions
+#    Only the 7 regions covered by DataSet2.csv are valid.
+#-----------------------------------------------------------
+pokemon:RegionShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Region ;
+    rdfs:label "Allowed regions (closed enumeration)" ;
+
+    sh:property [
+        sh:path pokemon:nombreRegion ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ( "Kanto" "Johto" "Hoenn" "Sinnoh" "Unova" "Kalos" "Alola" ) ;
+        sh:message "Region name must be one of: Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 7. Allowed range for Generation (numeroGeneracion in [1,7])
+#-----------------------------------------------------------
+pokemon:GenerationShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Generacion ;
+    rdfs:label "Generation must be an integer in [1,7]" ;
+
+    sh:property [
+        sh:path pokemon:numeroGeneracion ;
+        sh:datatype xsd:integer ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:minInclusive 1 ;
+        sh:maxInclusive 7 ;
+        sh:message "numeroGeneracion must be an integer between 1 and 7." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 8. Closed list of allowed colors
+#-----------------------------------------------------------
+pokemon:ColorShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Color ;
+    rdfs:label "Allowed colors (closed enumeration)" ;
+
+    sh:property [
+        sh:path pokemon:nombreColor ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:in ( "black" "blue" "brown" "gray" "green" "pink" "purple" "red" "white" "yellow" ) ;
+        sh:message "Color must be one of the 10 official Pokémon colors." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 9. captureRate datatype + value range
+#    According to the games, capture_rate is an integer in [3,255].
+#-----------------------------------------------------------
+pokemon:CaptureRateShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Pokemon ;
+    rdfs:label "captureRate must be an integer in [3,255]" ;
+
+    sh:property [
+        sh:path pokemon:captureRate ;
+        sh:datatype xsd:integer ;
+        sh:maxCount 1 ;
+        sh:minInclusive 3 ;
+        sh:maxInclusive 255 ;
+        sh:message "captureRate, if present, must be a single integer in [3,255]." ;
+    ] .
+
+
+#-----------------------------------------------------------
+# 10. Habitat constraint on Pokémon
+#     viveEnHabitat is OPTIONAL (only gens 1-3 have habitat data),
+#     but if present it MUST be a single IRI pointing to a pokemon:Habitat individual.
+#-----------------------------------------------------------
+pokemon:PokemonHabitatShape
+    a sh:NodeShape ;
+    sh:targetClass pokemon:Pokemon ;
+    rdfs:label "Optional habitat must be a Habitat IRI" ;
+
+    sh:property [
+        sh:path pokemon:viveEnHabitat ;
+        sh:class pokemon:Habitat ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        sh:message "viveEnHabitat must be a single IRI pointing to a pokemon:Habitat instance." ;
+    ] .

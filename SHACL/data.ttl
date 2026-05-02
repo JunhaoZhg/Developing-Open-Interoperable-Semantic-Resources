@@ -1,0 +1,453 @@
+@prefix pokemon: <http://example.org/pokemon#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+
+#############################################################
+# Sample data for SHACL validation
+#
+# - 10 instances are CONFORMANT (no shape violated)
+# - 12 instances are NON-CONFORMANT, each one triggers a
+#   specific shape from shapes.ttl
+#
+# This file is intentionally designed so that every shape in
+# shapes.ttl produces at least one validation result.
+#############################################################
+
+
+############### Reusable value-class individuals ###############
+
+# --- Tipos (types) ---
+pokemon:Grass     a pokemon:Tipo ; pokemon:nombreTipo "Grass" .
+pokemon:Poison    a pokemon:Tipo ; pokemon:nombreTipo "Poison" .
+pokemon:Fire      a pokemon:Tipo ; pokemon:nombreTipo "Fire" .
+pokemon:Water     a pokemon:Tipo ; pokemon:nombreTipo "Water" .
+pokemon:Electric  a pokemon:Tipo ; pokemon:nombreTipo "Electric" .
+pokemon:Flying    a pokemon:Tipo ; pokemon:nombreTipo "Flying" .
+pokemon:Dragon    a pokemon:Tipo ; pokemon:nombreTipo "Dragon" .
+pokemon:Psychic   a pokemon:Tipo ; pokemon:nombreTipo "Psychic" .
+
+# --- Regiones ---
+pokemon:Kanto  a pokemon:Region ; pokemon:nombreRegion "Kanto" .
+pokemon:Johto  a pokemon:Region ; pokemon:nombreRegion "Johto" .
+pokemon:Hoenn  a pokemon:Region ; pokemon:nombreRegion "Hoenn" .
+pokemon:Sinnoh a pokemon:Region ; pokemon:nombreRegion "Sinnoh" .
+
+# An INVALID region: "Orre" is not in the allowed enumeration.
+# This should violate RegionShape (sh:in).
+pokemon:Orre   a pokemon:Region ; pokemon:nombreRegion "Orre" .
+
+# --- Generaciones ---
+pokemon:Gen1 a pokemon:Generacion ; pokemon:numeroGeneracion 1 .
+pokemon:Gen2 a pokemon:Generacion ; pokemon:numeroGeneracion 2 .
+pokemon:Gen3 a pokemon:Generacion ; pokemon:numeroGeneracion 3 .
+pokemon:Gen6 a pokemon:Generacion ; pokemon:numeroGeneracion 6 .
+pokemon:Gen7 a pokemon:Generacion ; pokemon:numeroGeneracion 7 .
+
+# An INVALID generation: 9 is outside [1,7].
+# This should violate GenerationShape (sh:maxInclusive 7).
+pokemon:Gen9 a pokemon:Generacion ; pokemon:numeroGeneracion 9 .
+
+# --- EggGroups ---
+pokemon:EG_Monster a pokemon:EggGroup ; pokemon:nombreEggGroup "Monster" .
+pokemon:EG_Grass   a pokemon:EggGroup ; pokemon:nombreEggGroup "Grass" .
+pokemon:EG_Field   a pokemon:EggGroup ; pokemon:nombreEggGroup "Field" .
+pokemon:EG_Dragon  a pokemon:EggGroup ; pokemon:nombreEggGroup "Dragon" .
+
+# --- Curvas de experiencia ---
+pokemon:CurvaMediumSlow a pokemon:CurvaDeExperiencia ; pokemon:nombreCurva "Medium Slow" .
+pokemon:CurvaMediumFast a pokemon:CurvaDeExperiencia ; pokemon:nombreCurva "Medium Fast" .
+pokemon:CurvaSlow       a pokemon:CurvaDeExperiencia ; pokemon:nombreCurva "Slow" .
+
+# --- Hábitats ---
+pokemon:HabGrassland   a pokemon:Habitat ; pokemon:nombreHabitat "grassland" .
+pokemon:HabForest      a pokemon:Habitat ; pokemon:nombreHabitat "forest" .
+pokemon:HabCave        a pokemon:Habitat ; pokemon:nombreHabitat "cave" .
+pokemon:HabUrban       a pokemon:Habitat ; pokemon:nombreHabitat "urban" .
+
+# --- Habilidades ---
+pokemon:Overgrow   a pokemon:Habilidad ; pokemon:nombreHabilidad "Overgrow" .
+pokemon:Blaze      a pokemon:Habilidad ; pokemon:nombreHabilidad "Blaze" .
+pokemon:Torrent    a pokemon:Habilidad ; pokemon:nombreHabilidad "Torrent" .
+pokemon:Chlorophyll a pokemon:Habilidad ; pokemon:nombreHabilidad "Chlorophyll" .
+pokemon:Static     a pokemon:Habilidad ; pokemon:nombreHabilidad "Static" .
+
+# --- Colores ---
+pokemon:ColorGreen  a pokemon:Color ; pokemon:nombreColor "green" .
+pokemon:ColorRed    a pokemon:Color ; pokemon:nombreColor "red" .
+pokemon:ColorBlue   a pokemon:Color ; pokemon:nombreColor "blue" .
+pokemon:ColorYellow a pokemon:Color ; pokemon:nombreColor "yellow" .
+
+# An INVALID color: "magenta" is not in the closed enumeration.
+# This should violate ColorShape (sh:in).
+pokemon:ColorMagenta a pokemon:Color ; pokemon:nombreColor "magenta" .
+
+# --- Formas corporales ---
+pokemon:FormaQuadruped a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "quadruped" .
+pokemon:FormaUpright   a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "upright" .
+pokemon:FormaWings     a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "wings" .
+pokemon:FormaBugWings  a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "bug-wings" .
+
+
+#############################################################
+# (A) CONFORMANT POKÉMON  -- should NOT trigger any violation
+#############################################################
+
+pokemon:Bulbasaur a pokemon:Pokemon ;
+    pokemon:nombreForma          "Bulbasaur" ;
+    pokemon:hp                   45 ;
+    pokemon:attack               49 ;
+    pokemon:defense              49 ;
+    pokemon:spAtk                65 ;
+    pokemon:spDef                65 ;
+    pokemon:speed                45 ;
+    pokemon:baseTotal            318 ;     # 45+49+49+65+65+45 = 318  ✓
+    pokemon:captureRate          45 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Grass ;
+    pokemon:tieneTipoSecundario  pokemon:Poison ;
+    pokemon:disponibleEnRegion   pokemon:Kanto ;
+    pokemon:perteneceAGeneración pokemon:Gen1 ;
+    pokemon:perteneceAEggGroup   pokemon:EG_Monster ;
+    pokemon:tieneCurvaExperiencia pokemon:CurvaMediumSlow ;
+    pokemon:viveEnHabitat        pokemon:HabGrassland ;
+    pokemon:tieneHabilidad       pokemon:Overgrow ;
+    pokemon:tieneColor           pokemon:ColorGreen ;
+    pokemon:tieneFormaCorporal   pokemon:FormaQuadruped .
+
+pokemon:Charmander a pokemon:Pokemon ;
+    pokemon:nombreForma          "Charmander" ;
+    pokemon:hp                   39 ;
+    pokemon:attack               52 ;
+    pokemon:defense              43 ;
+    pokemon:spAtk                60 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                65 ;
+    pokemon:baseTotal            309 ;     # 39+52+43+60+50+65 = 309  ✓
+    pokemon:captureRate          45 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:disponibleEnRegion   pokemon:Kanto ;
+    pokemon:perteneceAGeneración pokemon:Gen1 ;
+    pokemon:perteneceAEggGroup   pokemon:EG_Monster ;
+    pokemon:tieneCurvaExperiencia pokemon:CurvaMediumSlow ;
+    pokemon:viveEnHabitat        pokemon:HabGrassland ;
+    pokemon:tieneHabilidad       pokemon:Blaze ;
+    pokemon:tieneColor           pokemon:ColorRed ;
+    pokemon:tieneFormaCorporal   pokemon:FormaUpright .
+
+pokemon:Squirtle a pokemon:Pokemon ;
+    pokemon:nombreForma          "Squirtle" ;
+    pokemon:hp                   44 ;
+    pokemon:attack               48 ;
+    pokemon:defense              65 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                64 ;
+    pokemon:speed                43 ;
+    pokemon:baseTotal            314 ;     # 44+48+65+50+64+43 = 314  ✓
+    pokemon:captureRate          45 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Water ;
+    pokemon:disponibleEnRegion   pokemon:Kanto ;
+    pokemon:perteneceAGeneración pokemon:Gen1 ;
+    pokemon:perteneceAEggGroup   pokemon:EG_Monster ;
+    pokemon:tieneCurvaExperiencia pokemon:CurvaMediumSlow ;
+    pokemon:tieneHabilidad       pokemon:Torrent ;
+    pokemon:tieneColor           pokemon:ColorBlue ;
+    pokemon:tieneFormaCorporal   pokemon:FormaUpright .
+
+pokemon:Pikachu a pokemon:Pokemon ;
+    pokemon:nombreForma          "Pikachu" ;
+    pokemon:hp                   35 ;
+    pokemon:attack               55 ;
+    pokemon:defense              40 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                90 ;
+    pokemon:baseTotal            320 ;     # 35+55+40+50+50+90 = 320  ✓
+    pokemon:captureRate          190 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Electric ;
+    pokemon:disponibleEnRegion   pokemon:Kanto ;
+    pokemon:perteneceAGeneración pokemon:Gen1 ;
+    pokemon:perteneceAEggGroup   pokemon:EG_Field ;
+    pokemon:tieneCurvaExperiencia pokemon:CurvaMediumFast ;
+    pokemon:viveEnHabitat        pokemon:HabForest ;
+    pokemon:tieneHabilidad       pokemon:Static ;
+    pokemon:tieneColor           pokemon:ColorYellow ;
+    pokemon:tieneFormaCorporal   pokemon:FormaQuadruped .
+
+pokemon:Charizard a pokemon:Pokemon ;
+    pokemon:nombreForma          "Charizard" ;
+    pokemon:hp                   78 ;
+    pokemon:attack               84 ;
+    pokemon:defense              78 ;
+    pokemon:spAtk                109 ;
+    pokemon:spDef                85 ;
+    pokemon:speed                100 ;
+    pokemon:baseTotal            534 ;     # 78+84+78+109+85+100 = 534  ✓
+    pokemon:captureRate          45 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneTipoSecundario  pokemon:Flying ;
+    pokemon:disponibleEnRegion   pokemon:Kanto ;
+    pokemon:perteneceAGeneración pokemon:Gen1 ;
+    pokemon:perteneceAEggGroup   pokemon:EG_Dragon ;
+    pokemon:tieneCurvaExperiencia pokemon:CurvaMediumSlow ;
+    pokemon:viveEnHabitat        pokemon:HabGrassland ;
+    pokemon:tieneHabilidad       pokemon:Blaze ;
+    pokemon:tieneColor           pokemon:ColorRed ;
+    pokemon:tieneFormaCorporal   pokemon:FormaWings .
+
+# Pokémon from later generations (no habitat property is fine: it is optional)
+pokemon:Greninja a pokemon:Pokemon ;
+    pokemon:nombreForma          "Greninja" ;
+    pokemon:hp                   72 ;
+    pokemon:attack               95 ;
+    pokemon:defense              67 ;
+    pokemon:spAtk                103 ;
+    pokemon:spDef                71 ;
+    pokemon:speed                122 ;
+    pokemon:baseTotal            530 ;     # 72+95+67+103+71+122 = 530  ✓
+    pokemon:captureRate          45 ;
+    pokemon:esHabilidadOculta    true ;
+    pokemon:tieneTipoPrimario    pokemon:Water ;
+    pokemon:disponibleEnRegion   pokemon:Kalos ;
+    pokemon:perteneceAGeneración pokemon:Gen6 ;
+    pokemon:perteneceAEggGroup   pokemon:EG_Monster ;
+    pokemon:tieneCurvaExperiencia pokemon:CurvaMediumSlow ;
+    pokemon:tieneHabilidad       pokemon:Torrent ;
+    pokemon:tieneColor           pokemon:ColorBlue ;
+    pokemon:tieneFormaCorporal   pokemon:FormaUpright .
+
+# A region different from the dataset's Kalos: needed for value-class coverage.
+pokemon:Kalos  a pokemon:Region ; pokemon:nombreRegion "Kalos" .
+
+pokemon:Pidgey a pokemon:Pokemon ;
+    pokemon:nombreForma          "Pidgey" ;
+    pokemon:hp                   40 ;
+    pokemon:attack               45 ;
+    pokemon:defense              40 ;
+    pokemon:spAtk                35 ;
+    pokemon:spDef                35 ;
+    pokemon:speed                56 ;
+    pokemon:baseTotal            251 ;     # 40+45+40+35+35+56 = 251  ✓
+    pokemon:captureRate          255 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Flying ;
+    pokemon:disponibleEnRegion   pokemon:Kanto ;
+    pokemon:perteneceAGeneración pokemon:Gen1 ;
+    pokemon:perteneceAEggGroup   pokemon:EG_Field ;
+    pokemon:tieneCurvaExperiencia pokemon:CurvaMediumSlow ;
+    pokemon:viveEnHabitat        pokemon:HabForest ;
+    pokemon:tieneHabilidad       pokemon:Static ;
+    pokemon:tieneColor           pokemon:ColorBlue ;
+    pokemon:tieneFormaCorporal   pokemon:FormaWings .
+
+
+#############################################################
+# (B) NON-CONFORMANT POKÉMON  -- each one breaks ONE shape
+#############################################################
+
+# --- B1. Violates PokemonShape: hp out of range (300 > 255) ---
+pokemon:Bad_HP_OutOfRange a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadHpPokemon" ;
+    pokemon:hp                   300 ;          # ❌ violates sh:maxInclusive 255
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            550 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B2. Violates PokemonShape: attack has wrong datatype (string instead of integer) ---
+pokemon:Bad_Attack_DatatypeWrong a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadAttackPokemon" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               "fifty" ;       # ❌ violates sh:datatype xsd:integer
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B3. Violates PokemonShape: missing speed (minCount 1) ---
+pokemon:Bad_MissingSpeed a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadMissingSpeed" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    # speed is intentionally omitted          # ❌ violates sh:minCount 1
+    pokemon:baseTotal            250 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B4. Violates PokemonTypeShape: missing primary type ---
+pokemon:Bad_NoPrimaryType a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadNoPrimaryType" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    # tieneTipoPrimario intentionally omitted ❌ violates sh:minCount 1
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B5. Violates PokemonTypeShape: two primary types (maxCount 1) ---
+pokemon:Bad_TwoPrimaryTypes a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadTwoPrimary" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire , pokemon:Water ;   # ❌ violates sh:maxCount 1
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B6. Violates PokemonHiddenAbilityShape: wrong datatype (string, not boolean) ---
+pokemon:Bad_HiddenAbility_NotBoolean a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadHiddenAbility" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    "yes" ;          # ❌ violates sh:datatype xsd:boolean
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B7. Violates PokemonNameShape: name starts in lowercase + invalid character ---
+pokemon:Bad_NameLowercase a pokemon:Pokemon ;
+    pokemon:nombreForma          "bad_name!" ;   # ❌ lowercase first char + '_' '!' not allowed
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B8. Violates PokemonBaseTotalShape (SPARQL): baseTotal does NOT match the sum
+#         hp+attack+defense+spAtk+spDef+speed = 60+60+60+60+60+60 = 360, not 999 ---
+pokemon:Bad_BaseTotalSum a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadBaseTotalSum" ;
+    pokemon:hp                   60 ;
+    pokemon:attack               60 ;
+    pokemon:defense              60 ;
+    pokemon:spAtk                60 ;
+    pokemon:spDef                60 ;
+    pokemon:speed                60 ;
+    pokemon:baseTotal            999 ;            # ❌ should be 360
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B9. Violates RegionShape: triggered indirectly via pokemon:Orre defined above ---
+#     (pokemon:Orre is an instance of pokemon:Region with nombreRegion "Orre",
+#      which is NOT in the closed list).
+# Pokémon used for completeness:
+pokemon:Bad_PokemonInOrre a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadOrrePokemon" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:disponibleEnRegion   pokemon:Orre ;       # invalid region (already flagged by RegionShape)
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B10. Violates GenerationShape: triggered via pokemon:Gen9 (numeroGeneracion = 9 > 7) ---
+pokemon:Bad_PokemonGen9 a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadGen9Pokemon" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:perteneceAGeneración pokemon:Gen9 ;       # invalid generation (already flagged by GenerationShape)
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B11. Violates ColorShape: triggered via pokemon:ColorMagenta defined above
+#          ("magenta" not in the closed enumeration). Pokémon for context: ---
+pokemon:Bad_PokemonMagenta a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadMagentaPokemon" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorMagenta .
+
+# --- B12. Violates CaptureRateShape: captureRate = 500 (out of [3,255]) ---
+pokemon:Bad_CaptureRateOutOfRange a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadCaptureRate" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          500 ;            # ❌ violates sh:maxInclusive 255
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:tieneColor           pokemon:ColorRed .
+
+# --- B13. Violates PokemonHabitatShape: viveEnHabitat points to a literal/non-Habitat resource ---
+pokemon:Bad_HabitatNotHabitat a pokemon:Pokemon ;
+    pokemon:nombreForma          "BadHabitatPokemon" ;
+    pokemon:hp                   50 ;
+    pokemon:attack               50 ;
+    pokemon:defense              50 ;
+    pokemon:spAtk                50 ;
+    pokemon:spDef                50 ;
+    pokemon:speed                50 ;
+    pokemon:baseTotal            300 ;
+    pokemon:captureRate          100 ;
+    pokemon:esHabilidadOculta    false ;
+    pokemon:tieneTipoPrimario    pokemon:Fire ;
+    pokemon:viveEnHabitat        pokemon:Grass ;   # ❌ pokemon:Grass is a Tipo, not a Habitat
+    pokemon:tieneColor           pokemon:ColorRed .

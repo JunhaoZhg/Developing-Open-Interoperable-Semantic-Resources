@@ -1,0 +1,201 @@
+@prefix pokemon: <http://example.org/pokemon#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Orre ;
+            sh:resultMessage "Region name must be one of: Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola." ;
+            sh:resultPath pokemon:nombreRegion ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:string ;
+                    sh:in ( "Kanto" "Johto" "Hoenn" "Sinnoh" "Unova" "Kalos" "Alola" ) ;
+                    sh:maxCount 1 ;
+                    sh:message "Region name must be one of: Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola." ;
+                    sh:minCount 1 ;
+                    sh:path pokemon:nombreRegion ] ;
+            sh:value "Orre" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_NameLowercase ;
+            sh:resultMessage "nombreForma must start with a capital letter and only contain letters, digits, spaces, hyphens or dots (length 2-40)." ;
+            sh:resultPath pokemon:nombreForma ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:PatternConstraintComponent ;
+            sh:sourceShape [ sh:maxLength 40 ;
+                    sh:message "nombreForma must start with a capital letter and only contain letters, digits, spaces, hyphens or dots (length 2-40)." ;
+                    sh:minLength 2 ;
+                    sh:path pokemon:nombreForma ;
+                    sh:pattern "^[A-Z][A-Za-z0-9 \\.\\-]+$" ] ;
+            sh:value "bad_name!" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_BaseTotalSum ;
+            sh:resultMessage "baseTotal does not match hp+attack+defense+spAtk+spDef+speed for this Pokémon." ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraint [ sh:message "baseTotal does not match hp+attack+defense+spAtk+spDef+speed for this Pokémon." ;
+                    sh:prefixes [ sh:declare [ sh:namespace "http://example.org/pokemon#"^^xsd:anyURI ;
+                                    sh:prefix "pokemon" ] ] ;
+                    sh:select """
+            SELECT $this ?baseTotal ?computed
+            WHERE {
+                $this pokemon:baseTotal ?baseTotal ;
+                      pokemon:hp ?hp ;
+                      pokemon:attack ?atk ;
+                      pokemon:defense ?def ;
+                      pokemon:spAtk ?spa ;
+                      pokemon:spDef ?spd ;
+                      pokemon:speed ?spe .
+                BIND ( (?hp + ?atk + ?def + ?spa + ?spd + ?spe) AS ?computed )
+                FILTER (?baseTotal != ?computed)
+            }
+        """ ] ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape pokemon:PokemonBaseTotalShape ;
+            sh:value pokemon:Bad_BaseTotalSum ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_NoPrimaryType ;
+            sh:resultMessage "Every Pokémon must have exactly one primary type (instance of pokemon:Tipo)." ;
+            sh:resultPath pokemon:tieneTipoPrimario ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape _:n931bfe646df6407b945e45c3a9d056dbb8 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_Attack_DatatypeWrong ;
+            sh:resultMessage "attack must be a single integer in the range [1,255]." ;
+            sh:resultPath pokemon:attack ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinInclusiveConstraintComponent ;
+            sh:sourceShape _:n931bfe646df6407b945e45c3a9d056dbb2 ;
+            sh:value "fifty" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_HP_OutOfRange ;
+            sh:resultMessage "hp must be a single integer in the range [1,255]." ;
+            sh:resultPath pokemon:hp ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MaxInclusiveConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:integer ;
+                    sh:maxCount 1 ;
+                    sh:maxInclusive 255 ;
+                    sh:message "hp must be a single integer in the range [1,255]." ;
+                    sh:minCount 1 ;
+                    sh:minInclusive 1 ;
+                    sh:path pokemon:hp ] ;
+            sh:value 300 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_HabitatNotHabitat ;
+            sh:resultMessage "viveEnHabitat must be a single IRI pointing to a pokemon:Habitat instance." ;
+            sh:resultPath pokemon:viveEnHabitat ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape [ sh:class pokemon:Habitat ;
+                    sh:maxCount 1 ;
+                    sh:message "viveEnHabitat must be a single IRI pointing to a pokemon:Habitat instance." ;
+                    sh:nodeKind sh:IRI ;
+                    sh:path pokemon:viveEnHabitat ] ;
+            sh:value pokemon:Grass ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_MissingSpeed ;
+            sh:resultMessage "speed must be a single integer in the range [1,255]." ;
+            sh:resultPath pokemon:speed ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:integer ;
+                    sh:maxCount 1 ;
+                    sh:maxInclusive 255 ;
+                    sh:message "speed must be a single integer in the range [1,255]." ;
+                    sh:minCount 1 ;
+                    sh:minInclusive 1 ;
+                    sh:path pokemon:speed ] ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_CaptureRateOutOfRange ;
+            sh:resultMessage "captureRate, if present, must be a single integer in [3,255]." ;
+            sh:resultPath pokemon:captureRate ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MaxInclusiveConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:integer ;
+                    sh:maxCount 1 ;
+                    sh:maxInclusive 255 ;
+                    sh:message "captureRate, if present, must be a single integer in [3,255]." ;
+                    sh:minInclusive 3 ;
+                    sh:path pokemon:captureRate ] ;
+            sh:value 500 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:ColorMagenta ;
+            sh:resultMessage "Color must be one of the 10 official Pokémon colors." ;
+            sh:resultPath pokemon:nombreColor ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:string ;
+                    sh:in ( "black" "blue" "brown" "gray" "green" "pink" "purple" "red" "white" "yellow" ) ;
+                    sh:maxCount 1 ;
+                    sh:message "Color must be one of the 10 official Pokémon colors." ;
+                    sh:minCount 1 ;
+                    sh:path pokemon:nombreColor ] ;
+            sh:value "magenta" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Gen9 ;
+            sh:resultMessage "numeroGeneracion must be an integer between 1 and 7." ;
+            sh:resultPath pokemon:numeroGeneracion ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MaxInclusiveConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:integer ;
+                    sh:maxCount 1 ;
+                    sh:maxInclusive 7 ;
+                    sh:message "numeroGeneracion must be an integer between 1 and 7." ;
+                    sh:minCount 1 ;
+                    sh:minInclusive 1 ;
+                    sh:path pokemon:numeroGeneracion ] ;
+            sh:value 9 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_Attack_DatatypeWrong ;
+            sh:resultMessage "attack must be a single integer in the range [1,255]." ;
+            sh:resultPath pokemon:attack ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n931bfe646df6407b945e45c3a9d056dbb2 ;
+            sh:value "fifty" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_HiddenAbility_NotBoolean ;
+            sh:resultMessage "esHabilidadOculta must be exactly one xsd:boolean (true/false)." ;
+            sh:resultPath pokemon:esHabilidadOculta ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:boolean ;
+                    sh:maxCount 1 ;
+                    sh:message "esHabilidadOculta must be exactly one xsd:boolean (true/false)." ;
+                    sh:minCount 1 ;
+                    sh:path pokemon:esHabilidadOculta ] ;
+            sh:value "yes" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_Attack_DatatypeWrong ;
+            sh:resultMessage "attack must be a single integer in the range [1,255]." ;
+            sh:resultPath pokemon:attack ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MaxInclusiveConstraintComponent ;
+            sh:sourceShape _:n931bfe646df6407b945e45c3a9d056dbb2 ;
+            sh:value "fifty" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode pokemon:Bad_TwoPrimaryTypes ;
+            sh:resultMessage "Every Pokémon must have exactly one primary type (instance of pokemon:Tipo)." ;
+            sh:resultPath pokemon:tieneTipoPrimario ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MaxCountConstraintComponent ;
+            sh:sourceShape _:n931bfe646df6407b945e45c3a9d056dbb8 ] .
+
+_:n931bfe646df6407b945e45c3a9d056dbb8 sh:class pokemon:Tipo ;
+    sh:maxCount 1 ;
+    sh:message "Every Pokémon must have exactly one primary type (instance of pokemon:Tipo)." ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:path pokemon:tieneTipoPrimario .
+
+_:n931bfe646df6407b945e45c3a9d056dbb2 sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:maxInclusive 255 ;
+    sh:message "attack must be a single integer in the range [1,255]." ;
+    sh:minCount 1 ;
+    sh:minInclusive 1 ;
+    sh:path pokemon:attack .
+
