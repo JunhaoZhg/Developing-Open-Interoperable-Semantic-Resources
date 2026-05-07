@@ -5,13 +5,6 @@
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 
 #############################################################
-# SHACL Shapes for the Pokémon ontology
-# Ontology IRI: http://example.org/pokemon#
-# Author: <student>
-# Course: Developing Open, Interoperable Semantic Resources (UPM)
-#
-# Each shape targets the class pokemon:Pokemon (or one of the
-# value classes) and validates a different KIND of constraint:
 #   1. PokemonShape           -> cardinality + datatype + value range (sh:minInclusive / sh:maxInclusive)
 #   2. PokemonTypeShape       -> object property class constraint + max cardinality
 #   3. PokemonHiddenAbilityShape -> datatype boolean + cardinality
@@ -30,7 +23,6 @@
 # 1. Main shape over pokemon:Pokemon
 #    - The 6 base stats (hp, attack, defense, spAtk, spDef, speed)
 #      are mandatory (exactly 1) and must be xsd:integer in [1,255]
-#      (the canonical Pokémon stat range).
 #    - nombreForma is mandatory (exactly 1) and must be a string.
 #-----------------------------------------------------------
 pokemon:PokemonShape
