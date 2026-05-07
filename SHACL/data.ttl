@@ -3,21 +3,7 @@
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 
-#############################################################
-# Sample data for SHACL validation
-#
-# - 10 instances are CONFORMANT (no shape violated)
-# - 12 instances are NON-CONFORMANT, each one triggers a
-#   specific shape from shapes.ttl
-#
-# This file is intentionally designed so that every shape in
-# shapes.ttl produces at least one validation result.
-#############################################################
-
-
-############### Reusable value-class individuals ###############
-
-# --- Tipos (types) ---
+# Tipos (types) 
 pokemon:Grass     a pokemon:Tipo ; pokemon:nombreTipo "Grass" .
 pokemon:Poison    a pokemon:Tipo ; pokemon:nombreTipo "Poison" .
 pokemon:Fire      a pokemon:Tipo ; pokemon:nombreTipo "Fire" .
@@ -27,14 +13,13 @@ pokemon:Flying    a pokemon:Tipo ; pokemon:nombreTipo "Flying" .
 pokemon:Dragon    a pokemon:Tipo ; pokemon:nombreTipo "Dragon" .
 pokemon:Psychic   a pokemon:Tipo ; pokemon:nombreTipo "Psychic" .
 
-# --- Regiones ---
+# Regiones 
 pokemon:Kanto  a pokemon:Region ; pokemon:nombreRegion "Kanto" .
 pokemon:Johto  a pokemon:Region ; pokemon:nombreRegion "Johto" .
 pokemon:Hoenn  a pokemon:Region ; pokemon:nombreRegion "Hoenn" .
 pokemon:Sinnoh a pokemon:Region ; pokemon:nombreRegion "Sinnoh" .
 
 # An INVALID region: "Orre" is not in the allowed enumeration.
-# This should violate RegionShape (sh:in).
 pokemon:Orre   a pokemon:Region ; pokemon:nombreRegion "Orre" .
 
 # --- Generaciones ---
@@ -45,54 +30,50 @@ pokemon:Gen6 a pokemon:Generacion ; pokemon:numeroGeneracion 6 .
 pokemon:Gen7 a pokemon:Generacion ; pokemon:numeroGeneracion 7 .
 
 # An INVALID generation: 9 is outside [1,7].
-# This should violate GenerationShape (sh:maxInclusive 7).
 pokemon:Gen9 a pokemon:Generacion ; pokemon:numeroGeneracion 9 .
 
-# --- EggGroups ---
+# EggGroups
 pokemon:EG_Monster a pokemon:EggGroup ; pokemon:nombreEggGroup "Monster" .
 pokemon:EG_Grass   a pokemon:EggGroup ; pokemon:nombreEggGroup "Grass" .
 pokemon:EG_Field   a pokemon:EggGroup ; pokemon:nombreEggGroup "Field" .
 pokemon:EG_Dragon  a pokemon:EggGroup ; pokemon:nombreEggGroup "Dragon" .
 
-# --- Curvas de experiencia ---
+# Curvas de experiencia
 pokemon:CurvaMediumSlow a pokemon:CurvaDeExperiencia ; pokemon:nombreCurva "Medium Slow" .
 pokemon:CurvaMediumFast a pokemon:CurvaDeExperiencia ; pokemon:nombreCurva "Medium Fast" .
 pokemon:CurvaSlow       a pokemon:CurvaDeExperiencia ; pokemon:nombreCurva "Slow" .
 
-# --- Hábitats ---
+# Hábitats
 pokemon:HabGrassland   a pokemon:Habitat ; pokemon:nombreHabitat "grassland" .
 pokemon:HabForest      a pokemon:Habitat ; pokemon:nombreHabitat "forest" .
 pokemon:HabCave        a pokemon:Habitat ; pokemon:nombreHabitat "cave" .
 pokemon:HabUrban       a pokemon:Habitat ; pokemon:nombreHabitat "urban" .
 
-# --- Habilidades ---
+# Habilidades
 pokemon:Overgrow   a pokemon:Habilidad ; pokemon:nombreHabilidad "Overgrow" .
 pokemon:Blaze      a pokemon:Habilidad ; pokemon:nombreHabilidad "Blaze" .
 pokemon:Torrent    a pokemon:Habilidad ; pokemon:nombreHabilidad "Torrent" .
 pokemon:Chlorophyll a pokemon:Habilidad ; pokemon:nombreHabilidad "Chlorophyll" .
 pokemon:Static     a pokemon:Habilidad ; pokemon:nombreHabilidad "Static" .
 
-# --- Colores ---
+# Colores 
 pokemon:ColorGreen  a pokemon:Color ; pokemon:nombreColor "green" .
 pokemon:ColorRed    a pokemon:Color ; pokemon:nombreColor "red" .
 pokemon:ColorBlue   a pokemon:Color ; pokemon:nombreColor "blue" .
 pokemon:ColorYellow a pokemon:Color ; pokemon:nombreColor "yellow" .
 
 # An INVALID color: "magenta" is not in the closed enumeration.
-# This should violate ColorShape (sh:in).
 pokemon:ColorMagenta a pokemon:Color ; pokemon:nombreColor "magenta" .
 
-# --- Formas corporales ---
+# Formas corporales 
 pokemon:FormaQuadruped a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "quadruped" .
 pokemon:FormaUpright   a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "upright" .
 pokemon:FormaWings     a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "wings" .
 pokemon:FormaBugWings  a pokemon:FormaCorporal ; pokemon:nombreFormaCorp "bug-wings" .
 
 
-#############################################################
-# (A) CONFORMANT POKÉMON  -- should NOT trigger any violation
-#############################################################
 
+# CONFORMANT POKÉMON  -- should NOT trigger any violation
 pokemon:Bulbasaur a pokemon:Pokemon ;
     pokemon:nombreForma          "Bulbasaur" ;
     pokemon:hp                   45 ;
@@ -245,14 +226,11 @@ pokemon:Pidgey a pokemon:Pokemon ;
     pokemon:tieneFormaCorporal   pokemon:FormaWings .
 
 
-#############################################################
-# (B) NON-CONFORMANT POKÉMON  -- each one breaks ONE shape
-#############################################################
-
+# NON-CONFORMANT POKÉMON  -- each one breaks ONE shape
 # --- B1. Violates PokemonShape: hp out of range (300 > 255) ---
 pokemon:Bad_HP_OutOfRange a pokemon:Pokemon ;
     pokemon:nombreForma          "BadHpPokemon" ;
-    pokemon:hp                   300 ;          # ❌ violates sh:maxInclusive 255
+    pokemon:hp                   300 ;          # violates sh:maxInclusive 255
     pokemon:attack               50 ;
     pokemon:defense              50 ;
     pokemon:spAtk                50 ;
@@ -268,7 +246,7 @@ pokemon:Bad_HP_OutOfRange a pokemon:Pokemon ;
 pokemon:Bad_Attack_DatatypeWrong a pokemon:Pokemon ;
     pokemon:nombreForma          "BadAttackPokemon" ;
     pokemon:hp                   50 ;
-    pokemon:attack               "fifty" ;       # ❌ violates sh:datatype xsd:integer
+    pokemon:attack               "fifty" ;       # violates sh:datatype xsd:integer
     pokemon:defense              50 ;
     pokemon:spAtk                50 ;
     pokemon:spDef                50 ;
@@ -287,7 +265,7 @@ pokemon:Bad_MissingSpeed a pokemon:Pokemon ;
     pokemon:defense              50 ;
     pokemon:spAtk                50 ;
     pokemon:spDef                50 ;
-    # speed is intentionally omitted          # ❌ violates sh:minCount 1
+    # speed is intentionally omitted          # violates sh:minCount 1
     pokemon:baseTotal            250 ;
     pokemon:captureRate          100 ;
     pokemon:esHabilidadOculta    false ;
@@ -306,7 +284,7 @@ pokemon:Bad_NoPrimaryType a pokemon:Pokemon ;
     pokemon:baseTotal            300 ;
     pokemon:captureRate          100 ;
     pokemon:esHabilidadOculta    false ;
-    # tieneTipoPrimario intentionally omitted ❌ violates sh:minCount 1
+    # tieneTipoPrimario intentionally omitted violates sh:minCount 1
     pokemon:tieneColor           pokemon:ColorRed .
 
 # --- B5. Violates PokemonTypeShape: two primary types (maxCount 1) ---
@@ -321,7 +299,7 @@ pokemon:Bad_TwoPrimaryTypes a pokemon:Pokemon ;
     pokemon:baseTotal            300 ;
     pokemon:captureRate          100 ;
     pokemon:esHabilidadOculta    false ;
-    pokemon:tieneTipoPrimario    pokemon:Fire , pokemon:Water ;   # ❌ violates sh:maxCount 1
+    pokemon:tieneTipoPrimario    pokemon:Fire , pokemon:Water ;   # violates sh:maxCount 1
     pokemon:tieneColor           pokemon:ColorRed .
 
 # --- B6. Violates PokemonHiddenAbilityShape: wrong datatype (string, not boolean) ---
@@ -335,13 +313,13 @@ pokemon:Bad_HiddenAbility_NotBoolean a pokemon:Pokemon ;
     pokemon:speed                50 ;
     pokemon:baseTotal            300 ;
     pokemon:captureRate          100 ;
-    pokemon:esHabilidadOculta    "yes" ;          # ❌ violates sh:datatype xsd:boolean
+    pokemon:esHabilidadOculta    "yes" ;          # violates sh:datatype xsd:boolean
     pokemon:tieneTipoPrimario    pokemon:Fire ;
     pokemon:tieneColor           pokemon:ColorRed .
 
 # --- B7. Violates PokemonNameShape: name starts in lowercase + invalid character ---
 pokemon:Bad_NameLowercase a pokemon:Pokemon ;
-    pokemon:nombreForma          "bad_name!" ;   # ❌ lowercase first char + '_' '!' not allowed
+    pokemon:nombreForma          "bad_name!" ;   # lowercase first char + '_' '!' not allowed
     pokemon:hp                   50 ;
     pokemon:attack               50 ;
     pokemon:defense              50 ;
@@ -364,7 +342,7 @@ pokemon:Bad_BaseTotalSum a pokemon:Pokemon ;
     pokemon:spAtk                60 ;
     pokemon:spDef                60 ;
     pokemon:speed                60 ;
-    pokemon:baseTotal            999 ;            # ❌ should be 360
+    pokemon:baseTotal            999 ;            # should be 360
     pokemon:captureRate          100 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Fire ;
@@ -431,7 +409,7 @@ pokemon:Bad_CaptureRateOutOfRange a pokemon:Pokemon ;
     pokemon:spDef                50 ;
     pokemon:speed                50 ;
     pokemon:baseTotal            300 ;
-    pokemon:captureRate          500 ;            # ❌ violates sh:maxInclusive 255
+    pokemon:captureRate          500 ;            # violates sh:maxInclusive 255
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Fire ;
     pokemon:tieneColor           pokemon:ColorRed .
@@ -449,5 +427,5 @@ pokemon:Bad_HabitatNotHabitat a pokemon:Pokemon ;
     pokemon:captureRate          100 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Fire ;
-    pokemon:viveEnHabitat        pokemon:Grass ;   # ❌ pokemon:Grass is a Tipo, not a Habitat
+    pokemon:viveEnHabitat        pokemon:Grass ;   # pokemon:Grass is a Tipo, not a Habitat
     pokemon:tieneColor           pokemon:ColorRed .
