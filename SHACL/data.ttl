@@ -82,7 +82,7 @@ pokemon:Bulbasaur a pokemon:Pokemon ;
     pokemon:spAtk                65 ;
     pokemon:spDef                65 ;
     pokemon:speed                45 ;
-    pokemon:baseTotal            318 ;     # 45+49+49+65+65+45 = 318  ✓
+    pokemon:baseTotal            318 ;     # 45+49+49+65+65+45 = 318  (Correct)
     pokemon:captureRate          45 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Grass ;
@@ -104,7 +104,7 @@ pokemon:Charmander a pokemon:Pokemon ;
     pokemon:spAtk                60 ;
     pokemon:spDef                50 ;
     pokemon:speed                65 ;
-    pokemon:baseTotal            309 ;     # 39+52+43+60+50+65 = 309  ✓
+    pokemon:baseTotal            309 ;     # 39+52+43+60+50+65 = 309  (Correct)
     pokemon:captureRate          45 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Fire ;
@@ -125,7 +125,7 @@ pokemon:Squirtle a pokemon:Pokemon ;
     pokemon:spAtk                50 ;
     pokemon:spDef                64 ;
     pokemon:speed                43 ;
-    pokemon:baseTotal            314 ;     # 44+48+65+50+64+43 = 314  ✓
+    pokemon:baseTotal            314 ;     # 44+48+65+50+64+43 = 314  (Correct)
     pokemon:captureRate          45 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Water ;
@@ -145,7 +145,7 @@ pokemon:Pikachu a pokemon:Pokemon ;
     pokemon:spAtk                50 ;
     pokemon:spDef                50 ;
     pokemon:speed                90 ;
-    pokemon:baseTotal            320 ;     # 35+55+40+50+50+90 = 320  ✓
+    pokemon:baseTotal            320 ;     # 35+55+40+50+50+90 = 320  (Correct)
     pokemon:captureRate          190 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Electric ;
@@ -166,7 +166,7 @@ pokemon:Charizard a pokemon:Pokemon ;
     pokemon:spAtk                109 ;
     pokemon:spDef                85 ;
     pokemon:speed                100 ;
-    pokemon:baseTotal            534 ;     # 78+84+78+109+85+100 = 534  ✓
+    pokemon:baseTotal            534 ;     # 78+84+78+109+85+100 = 534  (Correct)
     pokemon:captureRate          45 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Fire ;
@@ -189,7 +189,7 @@ pokemon:Greninja a pokemon:Pokemon ;
     pokemon:spAtk                103 ;
     pokemon:spDef                71 ;
     pokemon:speed                122 ;
-    pokemon:baseTotal            530 ;     # 72+95+67+103+71+122 = 530  ✓
+    pokemon:baseTotal            530 ;     # 72+95+67+103+71+122 = 530  (Correct)
     pokemon:captureRate          45 ;
     pokemon:esHabilidadOculta    true ;
     pokemon:tieneTipoPrimario    pokemon:Water ;
@@ -212,7 +212,7 @@ pokemon:Pidgey a pokemon:Pokemon ;
     pokemon:spAtk                35 ;
     pokemon:spDef                35 ;
     pokemon:speed                56 ;
-    pokemon:baseTotal            251 ;     # 40+45+40+35+35+56 = 251  ✓
+    pokemon:baseTotal            251 ;     # 40+45+40+35+35+56 = 251 (correct)
     pokemon:captureRate          255 ;
     pokemon:esHabilidadOculta    false ;
     pokemon:tieneTipoPrimario    pokemon:Flying ;
